@@ -1,0 +1,27 @@
+﻿@model StudentCatalog2016.Models.Student
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm())
+{
+    <div>
+        <label>Firstname</label>
+        @Html.TextBoxFor(a => a.Name);
+    </div>
+    <div>
+        <label>Lastname</label>
+        @Html.TextBoxFor(a => a.LastName);
+    </div>
+    <div>
+        <label>Email</label>
+        @Html.TextBoxFor(a => a.Email);
+    </div>
+
+    <input id="Save" type="submit" value="Save" class="btn btn-primary" />
+
+
+
+
+}
