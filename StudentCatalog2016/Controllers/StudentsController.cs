@@ -34,10 +34,18 @@ namespace StudentCatalog2016.Controllers
         [HttpPost]
         public ActionResult Create(Student student)
         {
-            ViewBag.Name = student.Name;
-            ViewBag.LastName = student.LastName;
-            ViewBag.Email = student.Email;
-            return View("Thanks"); // Calls the View "Thanks"
+            if (ModelState.IsValid)
+            {
+                ViewBag.Name = student.Name;
+                ViewBag.LastName = student.LastName;
+                ViewBag.Email = student.Email;
+                return View("Thanks"); // Calls the View "Thanks"
+            }
+            else
+            {
+                return View(student);
+            }
+           
         }
     }
 }
