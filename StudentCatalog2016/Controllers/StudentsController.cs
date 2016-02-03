@@ -43,7 +43,7 @@ namespace StudentCatalog2016.Controllers
             }
             else
             {
-                return View(student); // call the same if validation problems
+                return View(student); 
             }
            
         }
