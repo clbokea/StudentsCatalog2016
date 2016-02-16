@@ -8,20 +8,9 @@
 {
     @Html.ValidationSummary()
 
-    <div>
-        <label>Name</label>
-        @Html.TextBoxFor(a => a.Name);
-    </div>
-    <div>
-        <label>Lastname</label>
-        @Html.TextBoxFor(a => a.LastName);
-    </div>
-    <div>
-        <label>Email</label>
-        @Html.TextBoxFor(a => a.Email);
-    </div>
+   @Html.Partial("_partialViewTest")
 
-    <input id="Save" type="submit" value="Save" class="btn btn-primary" />
+    <input id="Save" type="submit" value="Save" class="btn btn-primary" /> <!--Apply the btn to show boostrap use -->
 
 
 

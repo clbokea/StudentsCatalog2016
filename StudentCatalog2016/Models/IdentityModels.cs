@@ -20,6 +20,9 @@ namespace StudentCatalog2016.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        // Specify the Student should be saved to db
+        public DbSet<Student> Students { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

@@ -17,7 +17,7 @@ namespace StudentCatalog2016.Models
         [Required]
         public String LastName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Stupid user Must fill out")]
         [EmailAddress]
         public String Email { get; set; }
 
