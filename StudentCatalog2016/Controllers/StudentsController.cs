@@ -72,8 +72,8 @@ namespace StudentCatalog2016.Controllers
 
 
                 // for edit not create - do as exercise!
-               //db.Entry(student).State = System.Data.EntityState.Modified;
-                
+                // db.Entry(student).State = System.Data.Entity.EntityState.Modified;
+
                 db.Students.Add(student);
                 db.SaveChanges();
 
