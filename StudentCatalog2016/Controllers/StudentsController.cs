@@ -1,6 +1,8 @@
 ﻿using StudentCatalog2016.Models;
+using StudentCatalog2016.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,14 +11,16 @@ namespace StudentCatalog2016.Controllers
 {
     public class StudentsController : Controller
     {
-        // quick and dirty - later dependency injection
-        ApplicationDbContext db = new ApplicationDbContext();
+        // quick and dirty - later dependency injection - this create an dependency which we do not want
+        //ApplicationDbContext db = new ApplicationDbContext();
+
+        StudentRepository studentRepo = new StudentRepository();
 
         // GET: Students
         public ActionResult Index()
         {
             // gets all student from db and converts it to a list
-            List<Student> students = db.Students.ToList();
+            List<Student> students = db.Students.ToList(); // if model in view is Null this is missing
             return View(students);
         }
 
@@ -40,20 +44,25 @@ namespace StudentCatalog2016.Controllers
             // create a post-version of the edit action-method
 
             Student students = db.Students.Find(id);
-
-
+            // so no need for "Select * from students where id = id"
             return View(students);
         }
         [HttpPost]
         public ActionResult Edit(Student student)
         {
-            // db.Students.Add(student);
-            // db.SaveChanges();
-            // for edit not create - do as exercise!
-            db.Entry(student).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
-            //return View("Thanks");
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                // db.Students.Add(student);
+                // db.SaveChanges();
+                // for edit not create - do as exercise!
+                db.Entry(student).State = EntityState.Modified;
+                db.SaveChanges();
+                //return View("Thanks");
+                return RedirectToAction("Index");
+            }
+
+            return View();
+            
         }
 
         [HttpGet]
@@ -81,9 +90,10 @@ namespace StudentCatalog2016.Controllers
             }
             else
             {
-                return View(student); // call the same view if validation problem occours
+                return View(); // call the same view if validation problem occours
             }
            
         }
+
     }
 }
