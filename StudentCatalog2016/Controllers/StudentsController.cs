@@ -12,7 +12,7 @@ namespace StudentCatalog2016.Controllers
     public class StudentsController : Controller
     {
         // quick and dirty - later dependency injection - this create an dependency which we do not want
-        //ApplicationDbContext db = new ApplicationDbContext();
+        ApplicationDbContext db = new ApplicationDbContext();
 
         StudentRepository studentRepo = new StudentRepository();
 
@@ -20,8 +20,8 @@ namespace StudentCatalog2016.Controllers
         public ActionResult Index()
         {
             // gets all student from db and converts it to a list
-            List<Student> students = db.Students.ToList(); // if model in view is Null this is missing
-            return View(students);
+            IEnumerable<Student> students = studentRepo.Getall();//db.Students.ToList(); // if model in view is Null this is missing
+            return View(studentRepo.Getall());
         }
 
         // Action Methods
@@ -45,7 +45,7 @@ namespace StudentCatalog2016.Controllers
 
             Student students = db.Students.Find(id);
             // so no need for "Select * from students where id = id"
-            return View(students);
+            return View(studentRepo.Find(id));
         }
         [HttpPost]
         public ActionResult Edit(Student student)

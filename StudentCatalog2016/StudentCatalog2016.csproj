@@ -209,6 +209,8 @@
     <Compile Include="Models\Student.cs" />
     <Compile Include="netfx\Testing\Ipsum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IStudenrepository.cs" />
+    <Compile Include="Repositories\StudentRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

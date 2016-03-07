@@ -14,13 +14,13 @@ namespace StudentCatalog2016.Repositories
         IEnumerable<Student> Getall();
 
         // Find - (should return one student beased on id)
-        int Find();
+        Student Find(int id);
 
         // Delete (shoudl delete a student based on id)
         void Delete();
 
         // InsertOrUpdate (should insert or update a student to the db)
-        void InsertOrUpdate(int id);
+        void InsertOrUpdate(Student student);
 
 
     }

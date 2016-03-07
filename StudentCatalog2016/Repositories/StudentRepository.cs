@@ -13,7 +13,7 @@ namespace StudentCatalog2016.Repositories
             throw new NotImplementedException();
         }
 
-        public int Find()
+        public Student Find(int id)
         {
             throw new NotImplementedException();
         }
@@ -23,9 +23,12 @@ namespace StudentCatalog2016.Repositories
             throw new NotImplementedException();
         }
 
-        public void InsertOrUpdate(int id)
+        public void InsertOrUpdate(Student student)
         {
-            throw new NotImplementedException();
+            if (student.Id == default(int))
+            {
+
+            }
         }
     }
 }
